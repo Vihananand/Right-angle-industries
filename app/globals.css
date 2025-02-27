@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.responsive-columns {
+    column-count: 1; /* Default: Single column for small screens */
+    column-gap: 16px;
+  }
+  
+  @media (min-width: 600px) {
+    .responsive-columns {
+      column-count: 2;
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .responsive-columns {
+      column-count: 3;
+    }
+  }
+  
+  
