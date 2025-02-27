@@ -57,7 +57,7 @@ const Navbar = () => {
               { name: "Home", link: "/" },
               { name: "Gallery", link: "/Gallery" },
               { name: "Clients", link: "/Clients" },
-              { name: "Directors", link: "/Directors" },
+              { name: "Vision", link: "/Vision" },
               { name: "Contact", link: "/Contact" },
             ].map((item) => (
               <li key={item.name}>
