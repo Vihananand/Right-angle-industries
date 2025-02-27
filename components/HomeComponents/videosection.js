@@ -35,6 +35,9 @@ export default function VideoSection() {
           <p className="text-white text-lg sm:text-xl lg:text-2xl mt-4 max-w-md">
             Empowering Brands with Superior Cooker-Making Machines.
           </p>
+          <p className="text-white text-lg sm:text-md mt-4 max-w-md">
+          At Right Angle Industries, we specialize in crafting high-quality cooker-making machines that empower brands with precision, efficiency, and durability. With a commitment to innovation and excellence, we provide industry-leading solutions to elevate manufacturing standards.
+          </p>
         </motion.div>
       </motion.div>
   );

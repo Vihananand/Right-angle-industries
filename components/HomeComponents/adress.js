@@ -45,7 +45,7 @@ export default function AddressSection() {
       >
         <iframe
           className="w-full aspect-video rounded-2xl"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.765081237493!2d75.77357521512593!3d31.22412948146647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5fbc1b7642ff%3A0x72c0a1cf0c1e6d19!2s18%2C%20Industrial%20Area%2C%20Phagwara%2C%20Punjab%20144401%2C%20India!5e0!3m2!1sen!2sin!4v1707749045680!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3412.607866676763!2d75.76681761148818!3d31.20388437425345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391af4d1a918a90b%3A0x24c3e76061bcfd2e!2sRight%20Angle%20Industries!5e0!3m2!1sen!2sin!4v1740679558119!5m2!1sen!2sin"
           allowFullScreen
         ></iframe>
       </motion.div>
