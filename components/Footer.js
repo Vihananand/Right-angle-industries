@@ -18,7 +18,7 @@ const sections = [
     ],
   },
   {
-    title: "Legal",
+    title: "Extra",
     links: [
       { name: "Vision", href: "/Vision" },
       { name: "Directors", href: "/Directors" },
