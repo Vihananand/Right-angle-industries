@@ -27,7 +27,7 @@ const Navbar = () => {
         </Link>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none"
           aria-controls="navbar-default"
           aria-expanded={isOpen}
         >
@@ -63,7 +63,8 @@ const Navbar = () => {
               <li key={item.name}>
                 <Link
                   href={item.link}
-                  className="block py-2 px-3 text-white rounded-sm hover:bg-gray-100/50 md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0"
+                  className="block py-2 px-3 text-white rounded-sm hover:bg-[#1E3A8A] md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0"
+                  onClick={() => setIsOpen(false)} // Close menu on click
                 >
                   {item.name}
                 </Link>
