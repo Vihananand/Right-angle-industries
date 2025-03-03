@@ -40,9 +40,9 @@ export default function Vision() {
                 <div className="w-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
                   {[
                     { title: "15+ Years", desc: "Innovating Precision Engineering in Manufacturing." },
-                    { title: "3+ Clients", desc: "Trusted by Leading Pressure Cooker Brands Worldwide." },
+                    { title: "5+ Clients", desc: "Trusted by Leading Pressure Cooker Brands Worldwide." },
                     { title: "3+ Awards", desc: "Recognized for Excellence in Manufacturing & Innovation." },
-                    { title: "99% Happy Clients", desc: "Delivering Reliable & High-Performance Machinery." }
+                    { title: "Happy Clients", desc: "Delivering Reliable & High-Performance Machinery." }
                   ].map((stat, index) => (
                     <motion.div
                       key={index}

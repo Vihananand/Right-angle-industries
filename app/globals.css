@@ -17,6 +17,16 @@
     .responsive-columns {
       column-count: 3;
     }
+}
+
+.responsive-columns-2 {
+  column-count: 1; /* Default: Single column for small screens */
+  column-gap: 16px;
+}
+
+@media (min-width: 600px) {
+  .responsive-columns-2 {
+    column-count: 2;
   }
-  
+}
   

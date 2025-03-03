@@ -9,12 +9,10 @@ export default function Gallery() {
         <div className="container px-4 sm:px-6 lg:px-8 py-12 mx-auto">
           <div className="flex flex-col items-center text-center space-y-6 mb-12">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-300">
-              Gallery
+              Our latest Products
             </h1>
-            <p className="text-md sm:text-lg lg:w-2/3 leading-relaxed text-gray-300">
-              These are the images of all our machines in the gallery. You can
-              see the machines. These machines are bought by the big giants of
-              the cooker industry.
+            <p className="uppercase text-md sm:text-4xl lg:w-2/3 leading-relaxed text-gray-300 font-bold">
+              Special Purpose Machinery
             </p>
           </div>
 
@@ -22,36 +20,56 @@ export default function Gallery() {
             {[
               {
                 src: "/Images/img-1.jpg",
-                title: "AUTOMATIC COOKER LID FACING MACHINE",
+                title: "image1",
               },
               {
                 src: "/Images/img-2.jpg",
-                title: "AUTOMATIC OVAL BORING MACHINE FOR PRESSURE COOKER BODY",
+                title: "image2",
               },
               {
                 src: "/Images/img-3.jpg",
-                title: "AUTOMATIC OVAL PRESSURE COOKER LEAK TESTING MACHINE",
+                title: "image3",
               },
               {
                 src: "/Images/img-4.jpg",
-                title: "COOKER LID FACING TRIMMING MACHINE",
+                title: "image4",
               },
               {
                 src: "/Images/img-5.jpg",
-                title: "HYDRAULIC RIVETTING MACHINE FOR PRESSURE COOKER",
+                title: "image5",
               },
               {
                 src: "/Images/img-6.jpg",
                 title:
-                  "AUTOMATIC PRESSURE COOKER OVAL BORING CUM DRILLING MACHINE",
+                  "image6",
               },
               {
                 src: "/Images/img-7.jpg",
-                title: "AUTOMATIC OVAL BORING MACHINE FOR PRESSURE COOKER BODY",
+                title: "image7",
               },
               {
                 src: "/Images/img-8.jpg",
-                title: "AUTOMATIC OVAL PRESSURE COOKER LEAK TESTING MACHINE",
+                title: "image8",
+              },
+              {
+                src: "/Images/img-9.jpg",
+                title: "image9",
+              },
+              {
+                src: "/Images/img-10.jpg",
+                title: "image10",
+              },
+              {
+                src: "/Images/img-11.jpg",
+                title: "image11",
+              },
+              {
+                src: "/Images/img-12.jpg",
+                title: "image12",
+              },
+              {
+                src: "/Images/img-13.jpg",
+                title: "image13",
               },
             ].map((item, index) => (
               <div key={index} className="relative group">
@@ -59,14 +77,50 @@ export default function Gallery() {
                   width={600}
                   height={400}
                   alt={item.title}
-                  className="w-full mb-4 rounded-xl transition-opacity duration-300 group-hover:opacity-85"
+                  className="w-full mb-4 rounded-xl transition-opacity"
                   src={item.src}
                 />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-xl p-6">
-                  <p className="text-white text-md sm:text-lg lg:text-xl font-semibold text-center">
-                    {item.title}
-                  </p>
-                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="text-gray-600 body-font">
+        <div className="w-3/4 px-4 sm:px-6 lg:px-8 py-12 mx-auto">
+          <div className="flex flex-col items-center text-center space-y-6 mb-12">
+            <p className="text-md sm:text-4xl lg:w-2/3 leading-relaxed text-gray-200 uppercase font bold">
+              Textile Machinery Components
+            </p>
+          </div>
+
+          <div className="responsive-columns-2">
+            {[
+              {
+                src: "/Images/img_1.jpg",
+                title: "image1",
+              },
+              {
+                src: "/Images/img_2.jpg",
+                title: "image2",
+              },
+              {
+                src: "/Images/img_3.jpg",
+                title: "image3",
+              },
+              {
+                src: "/Images/img_4.jpg",
+                title: "image4",
+              },
+            ].map((item, index) => (
+              <div key={index} className="relative group">
+                <Image
+                  width={400}
+                  height={400}
+                  alt={item.title}
+                  className="w-full mb-4 rounded-xl transition-opacity"
+                  src={item.src}
+                />
               </div>
             ))}
           </div>
