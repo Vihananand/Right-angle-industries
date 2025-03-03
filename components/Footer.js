@@ -6,15 +6,16 @@ const sections = [
   {
     title: "Resources",
     links: [
-      { name: "Gallery", href: "/Gallery" },
+      { name: "Products", href: "/Gallery" },
       { name: "Clients", href: "/Clients" },
     ],
   },
   {
     title: "Follow us",
     links: [
-      { name: "Instagram", href: "https://github.com/themesberg/flowbite" },
-      { name: "Facebook", href: "https://discord.gg/4eeurUVvTy" },
+      { name: "Instagram", href: "https://www.instagram.com/righ.tangleindia?utm_source=qr&igsh=cWdkN215dThra3dx" },
+      { name: "Facebook", href: "https://www.facebook.com/share/18mRSnsMv7/" },
+      { name: "Youtube", href: "https://youtube.com/@rightangleindustries8419?feature=shared" },
     ],
   },
   {
@@ -22,6 +23,7 @@ const sections = [
     links: [
       { name: "Vision", href: "/Vision" },
       { name: "Directors", href: "/Directors" },
+      { name: "Contacts", href: "/Contact" },
     ],
   },
 ];
@@ -60,7 +62,7 @@ export default function Footer() {
                 <ul className="text-gray-500 dark:text-gray-400 font-medium space-y-2">
                   {section.links.map((link) => (
                     <li key={link.name}>
-                      <a href={link.href} className="hover:underline">
+                      <a href={link.href} className="hover:underline" target="_blank">
                         {link.name}
                       </a>
                     </li>
