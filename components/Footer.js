@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const sections = [
   {
@@ -27,9 +27,9 @@ const sections = [
 ];
 
 const socialLinks = [
-  { icon: <FaFacebook size={30} />, href: "#" },
-  { icon: <FaInstagram size={30} />, href: "#" },
-  { icon: <FaTwitter size={30} />, href: "#" },
+  { icon: <FaFacebook size={30} />, href: "https://www.facebook.com/share/18mRSnsMv7/" },
+  { icon: <FaInstagram size={30} />, href: "https://www.instagram.com/righ.tangleindia?utm_source=qr&igsh=cWdkN215dThra3dx" },
+  { icon: <FaYoutube size={30} />, href: "https://youtube.com/@rightangleindustries8419?feature=shared" },
 ];
 
 export default function Footer() {
@@ -38,18 +38,18 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between md:items-center">
           <div className="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <Image
                 width={50}
                 height={50}
                 src="/logo.svg"
                 className="h-8 me-3"
-                alt="FlowBite Logo"
+                alt="Logo"
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Right Angle Industries
               </span>
-            </a>
+            </Link>
           </div>
           <div className="flex flex-wrap gap-8 sm:gap-12">
             {sections.map((section) => (
@@ -86,6 +86,7 @@ export default function Footer() {
                 key={index}
                 href={social.href}
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                target="_blank"
               >
                 {social.icon}
               </a>
