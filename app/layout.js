@@ -1,14 +1,21 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import "./globals.css";
 import Script from "next/script";
+import "./globals.css";
 
 export const metadata = {
   title: "Right Angle Industries - Best Cooker-Making Machines",
   description: "Get high-quality cooker-making machines from Right Angle Industries. Precision, efficiency, and durability guaranteed.",
-  keywords: "cooker, cooker making machines, industrial cookers, manufacturing equipment, automatic cooker machines, commercial cooker machines, industrial pressure cookers, stainless steel cookers, large-scale cooking equipment, food processing machinery, industrial kitchen equipment, automatic food cookers, heavy-duty cookers, industrial boiler cookers, steam cookers, professional kitchen appliances, industrial food machinery, high-capacity cookers, commercial kitchen machines, industrial cooking solutions, automated cooking systems, precision cooker machines, food production equipment, large-volume cookers, heavy-duty industrial cookers, high-efficiency cookers, industrial food preparation machines, smart cooking technology, restaurant cooking equipment, food-grade cookers, industrial-grade cookers, advanced cooking solutions, energy-efficient cooking machines, pressure cooking systems, electric industrial cookers, gas-powered cooking machines, industrial soup cookers, batch cooking machines, food industry cookers, high-speed cooking equipment, industrial food processors, automatic pressure cookers, commercial catering equipment, heavy-duty steamers, custom-built cooking machinery, industrial sauce cookers, high-performance food machines, hygienic cooking systems, industrial-grade pressure cookers, automated kitchen equipment, large-scale meal prep systems, durable commercial cookers.",
+  keywords: [
+    "cooker making machines", "industrial cookers", "automatic food cookers", 
+    "commercial cooking equipment", "stainless steel cookers", "food industry machines",
+    "high-efficiency cookers", "precision cooker machines", "automated food processing",
+    "smart cooking technology", "custom-built cooking machinery", "industrial food processors"
+  ].join(", "),
+
   authors: [{ name: "Right Angle Industries", url: "https://rightangleindustries.com" }],
-  robots: "index, follow",
+  robots: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+  
   openGraph: {
     title: "Right Angle Industries - Best Cooker-Making Machines",
     description: "Empowering brands with superior cooker-making machines.",
@@ -16,19 +23,27 @@ export const metadata = {
     siteName: "Right Angle Industries",
     images: [
       {
-        url: "/favicon.ico",
-        width: 800,
-        height: 600,
-        alt: "Right Angle Industries",
+        url: "https://rightangleindustries.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Right Angle Industries - Cooker Making Machines",
       },
     ],
     type: "website",
+    locale: "en_US",
   },
+
   twitter: {
     card: "summary_large_image",
+    site: "@RightAngleInd",
+    creator: "@RightAngleInd",
     title: "Right Angle Industries - Best Cooker-Making Machines",
     description: "Empowering brands with superior cooker-making machines.",
-    images: ["/favicon.ico"],
+    images: ["https://rightangleindustries.com/images/twitter-image.jpg"],
+  },
+  
+  alternates: {
+    canonical: "https://rightangleindustries.com",
   },
 };
 
@@ -37,8 +52,14 @@ export default function Layout({ children }) {
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Right Angle Industries" />
+        <meta name="copyright" content="Right Angle Industries" />
+        <meta name="theme-color" content="#007bff" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        {/* ✅ JSON-LD Structured Data (Extended) */}
         <Script
-          id="script"
+          id="structured-data"
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -48,7 +69,58 @@ export default function Layout({ children }) {
               "name": "Right Angle Industries",
               "url": "https://rightangleindustries.com",
               "logo": "https://rightangleindustries.com/favicon.ico",
-              "description": "Empowering brands with superior cooker-making machines.",
+              "sameAs": [
+                "https://www.facebook.com/share/18mRSnsMv7/",
+                "https://www.instagram.com/righ.tangleindia?utm_source=qr&igsh=cWdkN215dThra3dx",
+                "https://youtube.com/@rightangleindustries8419?feature=shared",
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9876543210",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": ["English", "Hindi"]
+              },
+              "description": "Leading manufacturer of high-quality industrial cooker-making machines.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "18-Industrial Area",
+                "addressLocality": "PUNJAB",
+                "addressRegion": "PB",
+                "postalCode": "144401",
+                "addressCountry": "IN"
+              }
+            }),
+          }}
+        />
+
+        {/* ✅ FAQ Schema for better ranking in Google */}
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What types of cooker-making machines do you offer?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We provide fully automated, semi-automatic, and industrial-grade cooker-making machines designed for efficiency and precision."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do you offer shipping?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! We offer shipping with full technical support and training."
+                  }
+                }
+              ]
             }),
           }}
         />

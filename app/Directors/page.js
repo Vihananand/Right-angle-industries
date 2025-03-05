@@ -21,9 +21,10 @@ export default function Directors() {
           <Image
             height={300}
             width={800}
-            src="/Images/ajitsingh.jpg"
+            src="/ajitsingh.jpg"
             alt="card-image"
             className="object-cover w-full h-full"
+            loading="lazy"
           />
         </div>
         <div className="p-4">
@@ -48,7 +49,7 @@ export default function Directors() {
 
       <div className="flex flex-col md:flex-row justify-evenly items-center w-full gap-8">
         {/* Managing Directors */}
-        {["/Images/manpreet.jpg", "/Images/kulveer.jpg"].map((src, index) => (
+        {["/manpreet.jpg", "/kulveer.jpg"].map((src, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 50 }}
@@ -67,13 +68,14 @@ export default function Directors() {
                 src={src}
                 alt="card-image"
                 className="object-cover w-full h-full"
+                loading="lazy"
               />
             </div>
             <div className="p-4">
               <h6 className="mb-2 text-slate-800 text-lg md:text-xl font-bold uppercase text-center">
                 {index === 0
                   ? "S. Manpreet Singh Bhamra"
-                  : "S. Kulveer Singh Bhamra"}
+                  : "S. Kulvir Singh Bhamra"}
               </h6>
               <h6 className="mb-2 text-slate-800 text-md md:text-lg font-semibold text-center">
                 Managing Director

@@ -19,7 +19,7 @@ export default function VideoSection() {
         muted
         loop
       >
-        <source src="Video/main.mp4" type="video/mp4" />
+        <source src="/main.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </motion.video>
 
@@ -33,7 +33,7 @@ export default function VideoSection() {
           Right Angle Industries
         </h1>
         <p className="text-white text-lg sm:text-xl lg:text-2xl mt-4 max-w-md">
-          Empowering Brands with Superior Cooker-Making Machines.
+          Empowering Brands with Superior Pressure Cooker-Making Machines.
         </p>
         <p className="text-white text-lg sm:text-md mt-4 max-w-md">
           At Right Angle Industries, we specialize in crafting high-quality,

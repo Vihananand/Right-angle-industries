@@ -23,9 +23,9 @@ export default function Home() {
   const opacityDesktop = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
 
   const achievementsData = [
-    { title: "Zed Certificate", image: "/Images/achievements-1.jpg" },
-    { title: "ISO Certificate", image: "/Images/achievements-2.jpg" },
-    { title: "Laghu Udyog Bharati", image: "/Images/achievements-3.jpg" },
+    { title: "Zed Certificate", image: "/achievements-1.jpg" },
+    { title: "ISO Certificate", image: "/achievements-2.jpg" },
+    { title: "Laghu Udyog Bharati", image: "/achievements-3.jpg" },
   ];
 
   return (

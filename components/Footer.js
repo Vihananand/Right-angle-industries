@@ -13,7 +13,7 @@ const sections = [
   {
     title: "Follow us",
     links: [
-      { name: "Instagram", href: "https://www.instagram.com/righ.tangleindia?utm_source=qr&igsh=cWdkN215dThra3dx" },
+      { name: "Instagram", href: "https://www.instagram.com/right_angle_industries?igsh=cWdkN215dThra3dx" },
       { name: "Facebook", href: "https://www.facebook.com/share/18mRSnsMv7/" },
       { name: "Youtube", href: "https://youtube.com/@rightangleindustries8419?feature=shared" },
     ],
@@ -30,7 +30,7 @@ const sections = [
 
 const socialLinks = [
   { icon: <FaFacebook size={30} />, href: "https://www.facebook.com/share/18mRSnsMv7/" },
-  { icon: <FaInstagram size={30} />, href: "https://www.instagram.com/righ.tangleindia?utm_source=qr&igsh=cWdkN215dThra3dx" },
+  { icon: <FaInstagram size={30} />, href: "https://www.instagram.com/right_angle_industries?igsh=cWdkN215dThra3dx" },
   { icon: <FaYoutube size={30} />, href: "https://youtube.com/@rightangleindustries8419?feature=shared" },
 ];
 

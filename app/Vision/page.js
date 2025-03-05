@@ -8,11 +8,10 @@ export default function Vision() {
     <section className="py-24 relative xl:mr-0 lg:mr-5 mr-0">
       <div className="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
         <div className="w-full justify-start items-center xl:gap-12 gap-10 grid lg:grid-cols-2 grid-cols-1">
-          
           {/* Left Side - Vision and Mission Text */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }} 
-            animate={{ opacity: 1, x: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex"
           >
@@ -23,14 +22,17 @@ export default function Vision() {
                     Vision and Mission
                   </h2>
                   <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
-                    We envision a future where precision engineering and innovation redefine the
-                    pressure cooker industry. Our mission is to design and manufacture state-of-the-art 
-                    pressure cooker machines that empower pressure cooker manufacturers with efficiency, 
-                    consistency, and reliability. By integrating cutting-edge technology, automation, 
-                    and sustainable manufacturing practices, we aim to revolutionize the way pressure cookers 
-                    are produced—ensuring safety, durability, and performance in every unit. Our commitment 
-                    to quality and continuous improvement drives us to be the most trusted partner for pressure 
-                    cooker manufacturers worldwide.
+                    We envision a future where precision engineering and
+                    innovation redefine the pressure cooker industry. Our
+                    mission is to design and manufacture state-of-the-art
+                    pressure cooker machines that empower pressure cooker
+                    manufacturers with efficiency, consistency, and reliability.
+                    By integrating cutting-edge technology, automation, and
+                    sustainable manufacturing practices, we aim to revolutionize
+                    the way pressure cookers are produced—ensuring safety,
+                    durability, and performance in every unit. Our commitment to
+                    quality and continuous improvement drives us to be the most
+                    trusted partner for pressure cooker manufacturers worldwide.
                   </p>
                 </div>
               </div>
@@ -39,10 +41,22 @@ export default function Vision() {
               <div className="w-full flex-col justify-center items-start gap-6 flex">
                 <div className="w-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
                   {[
-                    { title: "15+ Years", desc: "Innovating Precision Engineering in Manufacturing." },
-                    { title: "5+ Clients", desc: "Trusted by Leading Pressure Cooker Brands Worldwide." },
-                    { title: "3+ Awards", desc: "Recognized for Excellence in Manufacturing & Innovation." },
-                    { title: "Happy Clients", desc: "Delivering Reliable & High-Performance Machinery." }
+                    {
+                      title: "15+ Years",
+                      desc: "Innovating Precision Engineering in Manufacturing.",
+                    },
+                    {
+                      title: "5+ Clients",
+                      desc: "Trusted by Leading Pressure Cooker Brands Worldwide.",
+                    },
+                    {
+                      title: "3+ Awards",
+                      desc: "Recognized for Excellence in Manufacturing & Innovation.",
+                    },
+                    {
+                      title: "Happy Clients",
+                      desc: "Delivering Reliable & High-Performance Machinery.",
+                    },
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
@@ -66,8 +80,8 @@ export default function Vision() {
 
           {/* Right Side - Image */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }} 
-            animate={{ opacity: 1, x: 0 }} 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             className="w-full lg:justify-start justify-center items-start flex"
           >
@@ -76,12 +90,12 @@ export default function Vision() {
                 height={400}
                 width={800}
                 className="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover sm:block hidden"
-                src="/Images/visionimage.jpg"
-                alt="Vision Image"
+                src="/vision.jpg"
+                alt="VisionImage"
+                loading="lazy"
               />
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

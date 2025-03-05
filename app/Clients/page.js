@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const pressureCookerClients = [
-  { name: "Hawkins", src: "/Images/client-1.jpg" },
-  { name: "Pigeon", src: "/Images/client-2.jpg" },
-  { name: "TTK (Prestige)", src: "/Images/client-3.jpg" },
+  { name: "Hawkins", src: "/client-1.jpg" },
+  { name: "Pigeon", src: "/client-2.jpg" },
+  { name: "TTK (Prestige)", src: "/client-3.jpg" },
 ];
 
 const textileIndustryClients = [
-  { name: "Reliance Industry Pvt Ltd.", src: "/Images/client-4.jpg" },
-  { name: "Usha Martin", src: "/Images/client-5.jpg" },
-  { name: "JCT Textile Units", src: "/Images/client-6.jpg" },
+  { name: "Reliance Industry Pvt Ltd.", src: "/client-4.jpg" },
+  { name: "Usha Martin", src: "/client-5.jpg" },
+  { name: "JCT Textile Units", src: "/client-6.jpg" },
 ];
 
 const Clients = () => {
@@ -44,6 +44,7 @@ const Clients = () => {
               className="rounded-t-lg border-b-2 w-full h-auto"
               src={client.src}
               alt={client.name}
+              loading="lazy"
             />
             <div className="p-5 text-center">
               <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900">
@@ -80,6 +81,7 @@ const Clients = () => {
               className="rounded-t-lg border-b-2 w-full h-auto"
               src={client.src}
               alt={client.name}
+              loading="lazy"
             />
             <div className="p-5 text-center">
               <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900">
