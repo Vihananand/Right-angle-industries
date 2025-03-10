@@ -4,34 +4,48 @@ import Image from "next/image";
 export default function AchievementsSection({ achievements, isMobile }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={!isMobile ? { opacity: 1, scale: 1 } : undefined}
-      animate={isMobile ? { opacity: 1, scale: 1 } : undefined}
-      transition={{ duration: 1, ease: "easeOut" }}
-      className="flex flex-col items-center justify-center w-full min-h-[50vh] md:min-h-screen gap-32"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={!isMobile ? { opacity: 1, y: 0 } : undefined}
+      animate={isMobile ? { opacity: 1, y: 0 } : undefined}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="w-full py-10"
     >
-      <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold">
-            Achievements
-          </h1>
-      <div className="flex flex-col gap-20 sm:flex-row w-full justify-evenly px-6 md:px-12 lg:px-14">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {achievements.map((achievement, index) => (
-          <div
+          <motion.div
             key={index}
-            className="w-full sm:w-80 bg-white border border-gray-200 rounded-lg shadow-lg flex flex-col items-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0, delay: index * 0.2 }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            }}
+            className="bg-white rounded-xl overflow-hidden shadow-lg transform transition-all flex flex-col h-full"
           >
-            <Image
-              width={300}
-              height={200}
-              className="rounded-t-lg border-b-2 w-full h-[90%]"
-              src={achievement.image}
-              alt={achievement.title}
-            />
-            <div className="p-5 text-center">
-              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900">
-                {achievement.title}
-              </h5>
+            <div className="relative h-64 w-full">
+              <Image
+                src={achievement.image}
+                alt={achievement.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </div>
-          </div>
+            <div className="p-6 flex-grow">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{achievement.title}</h3>
+              {achievement.description && (
+                <p className="text-gray-600">{achievement.description}</p>
+              )}
+            </div>
+            <div className="px-6 pb-6">
+              <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">
+                Certified
+              </span>
+            </div>
+          </motion.div>
         ))}
       </div>
     </motion.div>

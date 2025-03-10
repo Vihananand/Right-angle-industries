@@ -1,80 +1,229 @@
 "use client"
 
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
-export default function Contacts() {
-  const [submitted, setSubmitted] = useState(false);
+export default function Contact() {
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page reload
-    setSubmitted(true); // Mark form as submitted
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      router.push("/contact-success");
+    }, 1500);
   };
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center bg-gradient-to-br from-[#1E3A8A] via-[#1E3A8A]/60 to-[#1E3A8A] px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 items-start gap-10 sm:gap-16 py-12 sm:py-24 px-6 sm:px-10 mx-auto max-w-5xl bg-white/70 font-[sans-serif] rounded-2xl shadow-[5rem_5rem_8rem_#152A5A]">
-        {!submitted ? (
-          <>
-            <div>
-              <h1 className="text-gray-800 text-3xl sm:text-4xl font-extrabold">Let&apos;s Talk</h1>
-              <p className="text-lg sm:text-xl text-gray-800 mt-4">
-                Reach out to us, we&apos;d love to hear from you and help you with your ideas.
-              </p>
-              
-              <div className="mt-10">
-                <h2 className="text-gray-800 text-lg sm:text-xl font-bold">Email</h2>
-                <ul className="mt-4">
-                  <li className="flex items-center">
-                    <div className="bg-[#2563EB] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="#ffffff" viewBox="0 0 479.058 479.058">
-                        <path d="M434.146 59.882H44.912C20.146 59.882 0 80.028 0 104.794v269.47c0 24.766 20.146 44.912 44.912 44.912h389.234c24.766 0 44.912-20.146 44.912-44.912v-269.47c0-24.766-20.146-44.912-44.912-44.912zm0 29.941c2.034 0 3.969.422 5.738 1.159L239.529 264.631 39.173 90.982a14.902 14.902 0 0 1 5.738-1.159zm0 299.411H44.912c-8.26 0-14.971-6.71-14.971-14.971V122.615l199.778 173.141c2.822 2.441 6.316 3.655 9.81 3.655s6.988-1.213 9.81-3.655l199.778-173.141v251.649c-.001 8.26-6.711 14.97-14.971 14.97z" />
-                      </svg>
-                    </div>
-                    <a href="mailto:rightangleindia@gmail.com" className="text-black text-sm sm:text-md ml-4">
-                      <small className="block">Mail to</small>
-                      <p>rightangleindia@gmail.com</p>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="mt-6">
-                <h2 className="text-gray-800 text-lg sm:text-xl font-bold">Phone</h2>
-                <ul className="mt-4">
-                  <li className="flex items-center">
-                    <div className="bg-[#2563EB] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="#ffffff" viewBox="0 0 24 24">
-                        <path d="M20.487 15.126c-1.132-.538-2.538-.262-3.36.614l-1.397 1.499c-3.77-1.876-6.873-4.982-8.748-8.748l1.499-1.397c.877-.822 1.152-2.228.614-3.36L7.782 1.314C6.997-.328 4.708-.58 3.542.585L2.047 2.08c-.933.933-1.347 2.25-1.146 3.56.391 2.535 1.483 5.885 4.296 9.781 2.933 4.048 6.379 6.661 9.781 8.296 1.31.201 2.627-.213 3.56-1.146l1.495-1.495c1.165-1.165.913-3.454-.729-4.239l-1.317-.711z" />
-                      </svg>
-                    </div>
-                    <a href="tel:+919876543210" className="text-black text-sm sm:text-md ml-4">
-                      <p>+91 98765 43210</p>
-                      <p>+91 88145 66162</p>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-blue-900">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
 
-            <form className="w-full space-y-4" onSubmit={handleSubmit}>
-              <input type="text" placeholder="Name" className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-md focus:outline-none focus:shadow-md" required />
-              <input type="email" placeholder="Email" className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-md focus:outline-none focus:shadow-md" required />
-              <input type="text" placeholder="Subject" className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-md focus:outline-none focus:shadow-md" required />
-              <textarea placeholder="Message" rows="5" className="w-full rounded-md px-4 pt-3 bg-gray-100 text-gray-800 text-md focus:outline-none focus:shadow-md" required></textarea>
-              <button type="submit" className="text-white bg-blue-500 hover:bg-blue-600 tracking-wide rounded-md text-sm px-4 py-3 w-full">
-                Send
-              </button>
-            </form>
-          </>
-        ) : (
-          <div className="flex flex-col justify-center items-center w-full sm:col-span-2 py-16 text-center">
-            <h1 className="text-gray-800 text-3xl sm:text-4xl font-extrabold">Success!</h1>
-            <p className="text-lg sm:text-xl text-gray-800 mt-4">Your message has been submitted successfully.</p>
-            <button onClick={() => setSubmitted(false)} className="mt-6 text-white bg-blue-500 hover:bg-blue-600 tracking-wide rounded-md text-sm px-4 py-3">
-              Go Back
-            </button>
+      <div className="relative pt-32 pb-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Header Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Get in Touch
+            </h1>
+            <p className="text-xl text-blue-200 max-w-2xl mx-auto">
+              Have questions about our products or services? We&apos;re here to help and answer any questions you might have.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl"
+            >
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-blue-200 text-sm font-medium mb-2">
+                      First Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-blue-300/10 rounded-lg text-white placeholder-blue-200/50 focus:outline-none focus:border-blue-400 transition-colors"
+                      placeholder="John"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-blue-200 text-sm font-medium mb-2">
+                      Last Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-blue-300/10 rounded-lg text-white placeholder-blue-200/50 focus:outline-none focus:border-blue-400 transition-colors"
+                      placeholder="Doe"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-blue-200 text-sm font-medium mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    className="w-full px-4 py-3 bg-white/5 border border-blue-300/10 rounded-lg text-white placeholder-blue-200/50 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-blue-200 text-sm font-medium mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    className="w-full px-4 py-3 bg-white/5 border border-blue-300/10 rounded-lg text-white placeholder-blue-200/50 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder="+91 XXXXX XXXXX"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-blue-200 text-sm font-medium mb-2">
+                    Subject
+                  </label>
+                  <select
+                    required
+                    className="w-full px-4 py-3 bg-white/5 border border-blue-300/10 rounded-lg text-white focus:outline-none focus:border-blue-400 transition-colors"
+                  >
+                    <option value="" className="bg-gray-900">Select a subject</option>
+                    <option value="general" className="bg-gray-900">General Inquiry</option>
+                    <option value="support" className="bg-gray-900">Technical Support</option>
+                    <option value="quote" className="bg-gray-900">Request a Quote</option>
+                    <option value="other" className="bg-gray-900">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-blue-200 text-sm font-medium mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 bg-white/5 border border-blue-300/10 rounded-lg text-white placeholder-blue-200/50 focus:outline-none focus:border-blue-400 transition-colors resize-none"
+                    placeholder="Your message here..."
+                  ></textarea>
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full py-4 rounded-lg font-medium text-white transition-all duration-300 ${
+                    isSubmitting
+                      ? "bg-blue-600/50 cursor-not-allowed"
+                      : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 shadow-lg shadow-blue-500/25"
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </span>
+                  ) : (
+                    "Send Message"
+                  )}
+                </motion.button>
+              </form>
+            </motion.div>
+
+            {/* Contact Information */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="space-y-8"
+            >
+              {/* Contact Cards */}
+              {[
+                {
+                  title: "Visit Our Office",
+                  description: "Plot No. 1234, Industrial Area Phase 2, Phagwara, Punjab, India",
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  )
+                },
+                {
+                  title: "Contact Numbers",
+                  description: "+91 98765 43210\n+91 88145 66162",
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  )
+                },
+                {
+                  title: "Email Address",
+                  description: "rightangleindia@gmail.com",
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )
+                },
+                {
+                  title: "Business Hours",
+                  description: "Monday - Sunday: 9:00 AM - 9:00 PM",
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/[0.15] transition-all duration-300"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="text-blue-400 mt-1">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-blue-200 whitespace-pre-line">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

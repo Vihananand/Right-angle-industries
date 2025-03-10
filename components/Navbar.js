@@ -1,79 +1,199 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navItems = [
+    { name: "Home", link: "/" },
+    { name: "Products", link: "/Gallery" },
+    { name: "Clients", link: "/Clients" },
+    { name: "Vision", link: "/Vision" },
+    { name: "Directors", link: "/Directors" },
+  ];
 
   return (
-    <nav className="bg-[#152A5A] border-gray-200 font-['Roboto']">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
-          href="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <Image
-            src="/logo.svg"
-            width={32}
-            height={32}
-            className="h-8 w-8"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-            RightAngle
-          </span>
-        </Link>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none"
-          aria-controls="navbar-default"
-          aria-expanded={isOpen}
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/90 backdrop-blur-md shadow-lg py-2"
+          : "bg-transparent py-4"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <Link
+            href="/"
+            className="flex items-center space-x-2"
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 1h15M1 7h15M1 13h15"
+            <Image
+              src="/logo.svg"
+              width={40}
+              height={40}
+              className="h-10 w-10"
+              alt="Right Angle Industries Logo"
             />
-          </svg>
-        </button>
-        <div
-          className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
-          id="navbar-default"
-        >
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-[#152A5A]">
-            {[
-              { name: "Home", link: "/" },
-              { name: "Products", link: "/Gallery" },
-              { name: "Clients", link: "/Clients" },
-              { name: "Vision", link: "/Vision" },
-              { name: "Contact", link: "/Contact" },
-            ].map((item) => (
-              <li key={item.name}>
+            <div className="flex flex-col">
+              <span className={`font-bold text-lg ${scrolled ? 'text-blue-900' : 'text-white'}`}>
+                Right Angle
+              </span>
+              <span className={`text-xs ${scrolled ? 'text-blue-700' : 'text-blue-200'}`}>
+                Industries
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="flex items-center space-x-6">
+              {navItems.map((item) => {
+                const isActive = pathname === item.link;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.link}
+                    className={`relative px-1 py-2 text-sm font-medium transition-colors duration-300 ${
+                      pathname === '/Vision' 
+                        ? isActive
+                          ? "text-blue-700"
+                          : "text-gray-700 hover:text-blue-700"
+                        : scrolled
+                          ? isActive
+                            ? "text-blue-700"
+                            : "text-gray-700 hover:text-blue-700"
+                          : isActive
+                            ? "text-white"
+                            : "text-gray-200 hover:text-white"
+                    }`}
+                  >
+                    {item.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className={`absolute bottom-0 left-0 right-0 h-0.5 ${
+                          pathname === '/Vision' || scrolled ? "bg-blue-700" : "bg-white"
+                        }`}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
+              <Link
+                href="/Contact"
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  pathname === '/Vision' || scrolled
+                    ? "bg-blue-700 text-white hover:bg-blue-800"
+                    : "bg-white text-blue-900 hover:bg-blue-50"
+                }`}
+              >
+                Get a Quote
+              </Link>
+            </div>
+          </div>
+
+          {/* Mobile Navigation Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                pathname === '/Vision' || scrolled
+                  ? "text-gray-700 focus:ring-blue-500"
+                  : "text-white focus:ring-white"
+              }`}
+              aria-expanded={isOpen}
+            >
+              <span className="sr-only">Open main menu</span>
+              {!isOpen ? (
+                <svg
+                  className="h-6 w-6"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className={`md:hidden shadow-lg ${pathname === '/Vision' ? 'bg-white' : 'bg-white'}`}
+          >
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {navItems.map((item) => (
                 <Link
+                  key={item.name}
                   href={item.link}
-                  className="block py-2 px-3 text-white rounded-sm hover:bg-[#1E3A8A] md:hover:bg-transparent md:border-0 md:hover:text-gray-300 md:p-0"
-                  onClick={() => setIsOpen(false)} // Close menu on click
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                    pathname === item.link
+                      ? "bg-blue-700 text-white"
+                      : "text-gray-700 hover:bg-blue-50 hover:text-blue-700"
+                  }`}
+                  onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </nav>
+              ))}
+              <Link
+                href="/Contact"
+                className="block px-3 py-2 mt-4 text-center rounded-md text-base font-medium bg-blue-700 text-white hover:bg-blue-800"
+                onClick={() => setIsOpen(false)}
+              >
+                Get a Quote
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
