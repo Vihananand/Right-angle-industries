@@ -24,10 +24,10 @@ const sections = [
   {
     title: "Resources",
     links: [
-      { name: "FAQ", href: "/Contact" },
-      { name: "Support", href: "/Contact" },
-      { name: "Maintenance", href: "/Contact" },
-      { name: "Installation", href: "/Contact" },
+      { name: "FAQ", href: "/faq" },
+      { name: "Support", href: "/support" },
+      { name: "Maintenance", href: "/maintenance" },
+      { name: "Installation", href: "/installation" },
     ],
   },
 ];

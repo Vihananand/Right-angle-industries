@@ -13,6 +13,8 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const [isMobile, setIsMobile] = useState(false);
 
+  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
+
   useEffect(() => {
     const checkScreenSize = () => setIsMobile(window.innerWidth < 768);
 
@@ -45,7 +47,7 @@ export default function Home() {
   const features = [
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
         </svg>
       ),
@@ -54,7 +56,7 @@ export default function Home() {
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
         </svg>
       ),
@@ -63,7 +65,7 @@ export default function Home() {
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
         </svg>
       ),
@@ -72,7 +74,7 @@ export default function Home() {
     },
     {
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       ),
@@ -83,20 +85,10 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            className="object-cover w-full h-full"
-          >
-            <source src="/main.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-blue-900/70 backdrop-blur-sm"></div>
-        </div>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-900 to-blue-900">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
 
         {/* Hero Content */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-24 md:pt-0">
@@ -105,7 +97,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl hero-heading leading-tight mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl text-white mb-6"
             >
               Revolutionizing <span className="text-blue-300">Pressure Cooker</span> Manufacturing
             </motion.h1>
@@ -114,7 +106,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl hero-text mb-8 max-w-3xl mx-auto"
+              className="text-xl text-white hero-text mb-8 max-w-3xl mx-auto"
             >
               At Right Angle Industries, we specialize in crafting high-quality, technologically advanced, and fully automated cooker-making machines that empower brands with precision, efficiency, and durability.
             </motion.p>
@@ -139,6 +131,7 @@ export default function Home() {
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          style={{ opacity: scrollIndicatorOpacity }}
           transition={{ delay: 1.2, duration: 1 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         >
@@ -156,11 +149,11 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-blue-900 to-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl section-heading mb-4">Why Choose Our Machines?</h2>
-            <p className="text-lg section-description max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl text-white mb-4">Why Choose Our Machines?</h2>
+            <p className="text-lg text-blue-200 max-w-3xl mx-auto">
               Our cooker-making machines are designed with your business needs in mind, offering unparalleled quality and efficiency.
             </p>
           </div>
@@ -173,13 +166,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/[0.15] transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-blue-400/20 rounded-full flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl feature-title mb-2">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
+                <h3 className="text-xl text-white mb-2">{feature.title}</h3>
+                <p className="text-blue-200">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -187,11 +180,11 @@ export default function Home() {
       </section>
 
       {/* Location Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-b from-gray-900 to-blue-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl section-heading mb-4">Visit Our Facility</h2>
-            <p className="text-lg section-description max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl text-white mb-4">Visit Our Facility</h2>
+            <p className="text-lg text-blue-200 max-w-3xl mx-auto">
               We&apos;re located at 18-Industrial Area, Phagwara - 144 401, Punjab-India
             </p>
           </div>
@@ -212,16 +205,16 @@ export default function Home() {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-gray-100">
+      <section className="py-24 bg-gradient-to-b from-blue-900 to-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               <span className="inline-block relative">
                 Our Achievements
-                <span className="absolute -bottom-3 left-0 w-full h-1 bg-blue-600 rounded-full"></span>
+                <span className="absolute -bottom-3 left-0 w-full h-1 bg-blue-400 rounded-full"></span>
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-blue-200 max-w-3xl mx-auto">
               We take pride in our certifications and recognition in the industry, demonstrating our commitment to quality and excellence.
             </p>
           </div>
@@ -235,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="bg-white">
+      <section className="bg-gradient-to-b from-gray-900 to-blue-900">
         <ServicesSection isMobile={isMobile} opacityDesktop={opacityDesktop} />
       </section>
     </>
