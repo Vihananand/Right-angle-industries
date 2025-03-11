@@ -74,7 +74,7 @@ export default function Clients() {
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center mt-12"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Trusted Clients</h1>
             <p className="text-xl text-blue-200 mb-8">
@@ -142,7 +142,7 @@ export default function Clients() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                  
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{client.name}</h3>

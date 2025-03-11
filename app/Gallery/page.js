@@ -66,7 +66,7 @@ export default function Gallery() {
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center mt-12"
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Products</h1>
             <p className="text-xl text-blue-200 mb-8">

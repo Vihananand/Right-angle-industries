@@ -41,7 +41,7 @@ export default function Directors() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10 text-center px-4"
+            className="relative z-10 text-center px-4 mt-12"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
               Our Legacy

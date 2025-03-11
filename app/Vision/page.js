@@ -94,7 +94,7 @@ export default function Vision() {
                 <Image
                   height={400}
                   width={800}
-                  className="w-full h-full rounded-3xl object-cover"
+                  className="w-full h-full rounded-3xl object-cover sm:block hidden"
                   src="/vision.jpg"
                   alt="VisionImage"
                   priority
