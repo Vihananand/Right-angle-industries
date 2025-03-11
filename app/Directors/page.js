@@ -43,9 +43,14 @@ export default function Directors() {
             transition={{ duration: 0.8 }}
             className="relative z-10 text-center px-4 mt-12"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Our Legacy
-            </h1>
+            <div className="flex items-center justify-center gap-6 mb-6">
+              <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-70 rounded-full"></div>
+              <h1 className="text-5xl md:text-6xl font-bold text-white relative">
+                Our Legacy
+                <span className="absolute -inset-1 bg-blue-400/20 blur-xl"></span>
+              </h1>
+              <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-70 rounded-full"></div>
+            </div>
             <p className="text-xl text-blue-200 max-w-3xl mx-auto">
               Meet the visionaries who have shaped Right Angle Industries into a leader in manufacturing excellence
             </p>
@@ -56,7 +61,7 @@ export default function Directors() {
         <div className="container mx-auto px-4 py-20">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-blue-400/20" />
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-gradient-to-b from-blue-400/40 via-blue-400/20 to-blue-400/40 shadow-[0_0_5px_#60A5FA] rounded-full" />
 
             {/* Leaders Cards */}
             {leaders.map((leader, index) => (
@@ -72,7 +77,12 @@ export default function Directors() {
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-4 h-4 rounded-full bg-blue-500 shadow-lg shadow-blue-500/50" />
+                  <div className="w-4 h-4 rounded-full bg-blue-500 shadow-[0_0_5px_#60A5FA,0_0_20px_#60A5FA] relative">
+                    {/* Inner glow */}
+                    <div className="absolute inset-0 rounded-full bg-blue-400 animate-pulse opacity-75"></div>
+                    {/* Neon glow */}
+                    <div className="absolute -inset-0 rounded-full bg-blue-400/20 blur-sm animate-glow"></div>
+                  </div>
                 </div>
 
                 {/* Content Card */}

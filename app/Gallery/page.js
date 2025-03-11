@@ -57,10 +57,13 @@ export default function Gallery() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-blue-900">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
+
       {/* Hero Section */}
-      <div className="relative bg-blue-900 py-24">
-        <div className="absolute inset-0 bg-blue-900/70 backdrop-blur-[1px]"></div>
+      <div className="relative py-24">
+        <div className="absolute inset-0 bg-blue-900/50 backdrop-blur-sm" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +71,11 @@ export default function Gallery() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center mt-12"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Products</h1>
+            <div className="flex items-center justify-center gap-6 mb-6">
+              <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-70"></div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white">Our Gallery</h1>
+              <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-70"></div>
+            </div>
             <p className="text-xl text-blue-200 mb-8">
               Discover our range of high-quality industrial machinery and components
             </p>
@@ -78,41 +85,41 @@ export default function Gallery() {
 
       {/* Products Sections */}
       {productCategories.map((category, categoryIndex) => (
-        <section key={categoryIndex} className="py-16 bg-white">
+        <section key={categoryIndex} className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.h2 
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={isLoaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 * categoryIndex }}
-              className="text-3xl font-bold text-gray-900 mb-12 text-center"
+              className="max-w-3xl mx-auto text-center mb-12"
             >
-              {category.name}
-            </motion.h2>
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-70"></div>
+                <h2 className="text-3xl font-bold text-white">{category.name}</h2>
+                <div className="h-[1px] w-16 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-70"></div>
+              </div>
+            </motion.div>
 
-            <div className="masonry-grid">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {category.images.map((image, imageIndex) => (
                 <motion.div 
                   key={imageIndex}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isLoaded ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.1 * imageIndex }}
-                  className={`masonry-item mb-6 ${
-                    image.aspectRatio === 'portrait' ? 'aspect-portrait' : 
-                    image.aspectRatio === 'square' ? 'aspect-square' : 
-                    'aspect-landscape'
-                  }`}
+                  className="relative aspect-[4/3] group"
                 >
-                  <div className="relative h-full w-full overflow-hidden rounded-lg group">
+                  <div className="absolute inset-0 rounded-xl overflow-hidden bg-blue-900/20 backdrop-blur-sm">
                     <Image
                       src={image.src}
                       alt={image.title}
-                      width={image.width}
-                      height={image.height}
-                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-all duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-blue-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <h3 className="text-white text-lg font-semibold drop-shadow-md">{image.title}</h3>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                    <div className="absolute inset-0 flex flex-col justify-end p-6 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <h3 className="text-white text-lg font-semibold mb-2">{image.title}</h3>
+                      <div className="h-[1px] w-12 bg-gradient-to-r from-blue-400 to-transparent"></div>
                     </div>
                   </div>
                 </motion.div>

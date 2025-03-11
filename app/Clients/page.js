@@ -64,10 +64,10 @@ export default function Clients() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-blue-900">
       {/* Hero Section */}
-      <div className="relative bg-blue-900 py-24">
-        <div className="absolute inset-0 bg-blue-900/70 backdrop-blur-[1px]"></div>
+      <div className="relative py-24">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -84,27 +84,31 @@ export default function Clients() {
       </div>
 
       {/* Client Categories Navigation */}
-      <div className="bg-gray-50 border-b">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center">
+      <div className="sm:bg-gradient-to-b from-gray-900/80 to-blue-900/80 backdrop-blur-sm border-t border-b border-blue-800/20 sm:max-w-xl sm:mx-auto sm:rounded-full w-full">
+        <div className="mx-auto px-4 sm:px-6">
+          <div className="flex flex-wrap justify-center gap-4 py-4">
             {clients.map((category, index) => (
               <button
                 key={index}
                 onClick={() => setActiveCategory(index)}
-                className={`px-6 py-4 text-lg font-medium transition-colors relative ${
+                className={`px-6 py-3 text-lg font-medium rounded-full transition-all duration-300 ${
                   activeCategory === index 
-                    ? "text-blue-700" 
-                    : "text-gray-600 hover:text-blue-700"
+                    ? "bg-blue-600/90 text-white shadow-lg scale-105" 
+                    : "text-blue-200 hover:bg-blue-800/30 hover:text-white"
                 }`}
               >
-                {category.category}
-                {activeCategory === index && (
-                  <motion.div 
-                    layoutId="activeCategory"
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-blue-700"
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
+                <span className="flex items-center gap-2">
+                  {category.category === "Pressure Cooker Industry" ? (
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                  )}
+                  {category.category}
+                </span>
               </button>
             ))}
           </div>
@@ -121,8 +125,8 @@ export default function Clients() {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{clients[activeCategory].category}</h2>
-            <p className="text-lg text-gray-600">{clients[activeCategory].description}</p>
+            <h2 className="text-3xl font-bold text-white mb-4">{clients[activeCategory].category}</h2>
+            <p className="text-lg text-blue-200">{clients[activeCategory].description}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -132,7 +136,7 @@ export default function Clients() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isLoaded ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                className="bg-blue-900/50 backdrop-blur-sm rounded-lg overflow-hidden hover:bg-blue-900/60 transition-all duration-300"
               >
                 <div className="relative h-64">
                   <Image
@@ -141,12 +145,11 @@ export default function Clients() {
                     fill
                     className="object-cover"
                   />
-
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{client.name}</h3>
-                  <p className="text-gray-600 mb-4">{client.description}</p>
-                  <p className="text-sm text-blue-700 font-medium">{client.since}</p>
+                  <h3 className="text-xl font-bold text-white mb-2">{client.name}</h3>
+                  <p className="text-blue-200 mb-4">{client.description}</p>
+                  <p className="text-sm text-blue-300 font-medium">{client.since}</p>
                 </div>
               </motion.div>
             ))}
@@ -155,11 +158,15 @@ export default function Clients() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-            <p className="text-lg text-gray-600">Hear from the companies that rely on our machinery and components</p>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-70"></div>
+              <h2 className="text-3xl font-bold text-white">What Our Clients Say</h2>
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-70"></div>
+            </div>
+            <p className="text-lg text-blue-200">Hear from the companies that rely on our machinery and components</p>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -167,41 +174,23 @@ export default function Clients() {
               initial={{ opacity: 0 }}
               animate={isLoaded ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-white p-8 rounded-lg shadow-lg"
+              className="bg-gray-500/50 backdrop-blur-sm p-8 rounded-lg"
             >
               <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 h-16 bg-blue-900/70 rounded-full flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">Quality and Reliability</h3>
-                  <p className="text-gray-600">Hawkins Pressure Cookers</p>
+                  <h3 className="text-xl font-bold text-white">Quality and Reliability</h3>
+                  <p className="text-blue-200">Hawkins Pressure Cookers</p>
                 </div>
               </div>
-              <blockquote className="text-lg text-gray-700 italic">
+              <blockquote className="text-lg text-blue-200 italic">
                 &quot;Right Angle Industries has been our trusted partner for over a decade. Their machinery has significantly improved our production efficiency while maintaining the high quality standards our customers expect. Their technical support and after-sales service are exceptional.&quot;
               </blockquote>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl text-white font-bold mb-6">Join Our Growing List of Satisfied Clients</h2>
-            <p className="text-xl text-blue-200 mb-8">
-              Contact us today to discuss how our machinery and components can enhance your manufacturing process
-            </p>
-            <a 
-              href="/Contact" 
-              className="inline-block px-8 py-3 bg-white text-blue-900 rounded-full font-medium hover:bg-blue-50 transition-colors shadow-lg"
-            >
-              Get in Touch
-            </a>
           </div>
         </div>
       </section>
