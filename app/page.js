@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { setupSmoothScrolling } from "../utils/smoothScroll";
 
 // Import components
 import ServicesSection from "../components/HomeComponents/service";
@@ -20,7 +21,14 @@ export default function Home() {
 
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
+    
+    // Setup smooth scrolling
+    const cleanupSmoothScrolling = setupSmoothScrolling();
+    
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+      cleanupSmoothScrolling();
+    };
   }, []);
 
   const opacityDesktop = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);

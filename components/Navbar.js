@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { setupSmoothScrolling } from "../utils/smoothScroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,14 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    // Setup smooth scrolling with a small offset to account for the fixed navbar
+    const cleanupSmoothScrolling = setupSmoothScrolling(80);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cleanupSmoothScrolling();
+    };
   }, []);
 
   const navItems = [

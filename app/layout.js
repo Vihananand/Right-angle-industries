@@ -19,7 +19,7 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#1E3A8A" />
